@@ -1,37 +1,37 @@
 ## HTTPS 的安全通信机制
 
-> Client：
+**Client**
 
-    * Handshake: ClientHello
+* Handshake: ClientHello
 
-> Server:
+**Server**
 
-    * Handshake: ServerHello
-    * Handshake: Certificate
-    * Handshake: ServerHelloDone
-    
-> Client:
+* Handshake: ServerHello
+* Handshake: Certificate
+* Handshake: ServerHelloDone
 
-    * Handshake: ClientKeyExchange
-    * ChangeCipherSpec
-    * Handshake: Finished
+**Client**
 
-> Server:
+* Handshake: ClientKeyExchange
+* ChangeCipherSpec
+* Handshake: Finished
 
-    * ChangeCipherSpec
-    * Handshake: Finished
+**Server**
 
-> Client:
+* ChangeCipherSpec
+* Handshake: Finished
 
-    * Application Data(HTTP)
+**Client**
 
-> Server:
+* Application Data(HTTP)
 
-    * Application Data(HTTP)
+**Server**
 
-> Client:
+* Application Data(HTTP)
 
-    * Alert: warning, close notify
+**Client**
+
+* Alert: warning, close notify
 
 
 FIN close TCP Connections
