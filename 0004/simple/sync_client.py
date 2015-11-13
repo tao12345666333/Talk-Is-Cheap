@@ -9,4 +9,4 @@ def synchronous_fetch(url):
 
 
 if __name__ == '__main__':
-    print synchronous_fetch('http://moelove.info')
+    synchronous_fetch('http://google.com')
