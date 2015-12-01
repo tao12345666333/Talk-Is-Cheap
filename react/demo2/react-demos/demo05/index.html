@@ -7,27 +7,29 @@
   </head>
   <body>
     <script type="text/babel">
-      var NotesList = React.createClass({
-        render: function() {
-          return (
-            <ol>
-              {
-                React.Children.map(this.props.children, function (child) {
-                  return <li>{child}</li>;
-                })
-              }
-            </ol>
-          );
-        }
-      });
+        var NotesList = React.createClass({
+          render: function() {
+            console.log(this.props)
+            return (
+              <ol>
+                {
+                  React.Children.map(this.props.children, function (child) {
+                    console.log(child);
+                    return <li>{child}</li>;
+                  })
+                }
+              </ol>
+            );
+          }
+        });
 
-      ReactDOM.render(
-        <NotesList>
-          <span>hello</span>
-          <span>world</span>
-        </NotesList>,
-        document.body
-      );
+        ReactDOM.render(
+            <NotesList>
+                <h1>Hello</h1>
+                <h2>React</h2>
+            </NotesList>,
+          document.body
+        );
     </script>
   </body>
 </html>

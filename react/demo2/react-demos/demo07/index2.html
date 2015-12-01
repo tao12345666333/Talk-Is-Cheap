@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../build/react.js"></script>
+        <script src="../build/react-dom.js"></script>
+        <script src="../build/browser.min.js"></script>
+    </head>
+    <body>
+        <div id='pic'></div>
+        <script type="text/babel">
+            var MyComponent = React.createClass({
+                handleClick: function(){
+                    console.log('click pic');
+                },
+                render: function(){
+                    return (
+                        <div>
+                            <img src="pic.jpg" onClick={this.handleClick} />
+                        </div>
+                    )
+                }
+            });
+
+            ReactDOM.render(
+                <MyComponent />,
+                document.getElementById('pic')
+            )
+
+        </script>
+    </body>
+</html>
