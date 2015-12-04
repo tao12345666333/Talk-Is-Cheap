@@ -14,7 +14,7 @@
           };
         },
 
-        componentDidMount: function () {
+        componentWillMount: function () {
           this.timer = setInterval(function () {
             var opacity = this.state.opacity;
             opacity -= .05;

@@ -4,18 +4,40 @@
         <script src="../build/react.js"></script>
         <script src="../build/react-dom.js"></script>
         <script src="../build/browser.min.js"></script>
+        <style>
+            .nor img{
+                width: 60%;
+            }
+            .sm img{
+                width: 20%;
+            }
+        </style>
     </head>
     <body>
         <div id='pic'></div>
         <script type="text/babel">
             var MyComponent = React.createClass({
+                getInitialState: function() {
+                    return {
+                        isShow: true
+                    };
+                },
                 handleClick: function(){
+                    this.setState({
+                        isShow: !this.state.isShow
+                    });
                     console.log('click pic');
                 },
                 render: function(){
+                    let picDom = this.state.isShow ? <div className="nor">
+                                                        <img src="pic.jpg" onClick={this.handleClick} />
+                                                     </div> :
+                                                     <div className="sm">
+                                                        <img src="pic.jpg" onClick={this.handleClick} />
+                                                     </div>;
                     return (
                         <div>
-                            <img src="pic.jpg" onClick={this.handleClick} />
+                            {picDom}
                         </div>
                     )
                 }
