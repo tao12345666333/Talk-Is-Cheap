@@ -26,3 +26,7 @@ class Stack(object):
             raise Exception('stack empty')
         else:
             self.stack.pop()
+
+
+if __name__ == '__main__':
+    stack = Stack()
