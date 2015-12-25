@@ -5,3 +5,9 @@
 ```bash
 echo -e "\e[1;31m This is red text\e[0m"
 ```
+
+## awk 文本处理
+
+```Bash
+awk 'BEGIN{ print "start" } pattern { commands } END{ print "end" }'
+```
