@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
+import os
+import uuid
+
 import tornado.web
 import tornado.ioloop
 
@@ -38,15 +41,22 @@ class FileFormHandler(tornado.web.RequestHandler):
 
     def get(self):
         self.write(
-            '<html><body><form action="/file" method="POST">'
+            '<html><body><form enctype="multipart/form-data" action="/file" method="POST">'
             '<input type="file" name="file">'
             '<input type="submit" value="Submit">'
             '</form></body></html>'
         )
 
     def post(self):
-        self.set_header('Content-Type', 'multipart/form-data')
-        print self.request
+        fileinfo = self.request.files['file'][0]
+        fname = fileinfo['filename']
+        ctype = os.path.splitext(fname)[1]
+        cname = str(uuid.uuid4()) + ctype
+
+        f = open('./' + cname, 'w')
+        f.write(fileinfo['body'])
+        self.finish('%s is uploaded! and rename %s, check current folder.'
+                    % (fname, cname))
 
 
 if __name__ == '__main__':
