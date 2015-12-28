@@ -11,6 +11,7 @@ class MainHandler(tornado.web.RequestHandler):
             '<html><body><form action="/form" method="POST">'
             '<input type="text" name="msg">'
             '<input type="text" name="msg">'
+            '<input type="file" name="file">'
             '<input type="submit" value="Submit">'
             '</form></body></html>'
         )
@@ -33,6 +34,21 @@ class FormHandler(tornado.web.RequestHandler):
             self.write('msg is %s\n' % i)
 
 
+class FileFormHandler(tornado.web.RequestHandler):
+
+    def get(self):
+        self.write(
+            '<html><body><form action="/file" method="POST">'
+            '<input type="file" name="file">'
+            '<input type="submit" value="Submit">'
+            '</form></body></html>'
+        )
+
+    def post(self):
+        self.set_header('Content-Type', 'multipart/form-data')
+        print self.request
+
+
 if __name__ == '__main__':
     settings = {
         'debug': True
@@ -40,7 +56,8 @@ if __name__ == '__main__':
 
     app = tornado.web.Application([
         ('/', MainHandler),
-        ('/form', FormHandler)
+        ('/form', FormHandler),
+        ('/file', FileFormHandler)
     ], **settings)
 
     app.listen(9999)
