@@ -61,11 +61,26 @@ class FileFormHandler(tornado.web.RequestHandler):
 
 class BaseHandler(tornado.web.RequestHandler):
 
+    def initialize(self, key):
+        logging.warning('default keyword argument is %s' % key)
+
+    def prepare(self):
+        logging.warning('prepare ..')
+        # self.finish()
+        # self.send_error()
+
+
+class SequenceHandler(BaseHandler):
+
+    # def initialize(self, key):
+        # logging.warning('SequenceHandler default keyword argument is %s' % key)
+
     def get(self):
-        pass
+        logging.warn('SequenceHandler get ..')
+        self.write_error(200)
 
     def post(self):
-        pass
+        logging.warn('SequenceHandler post ..')
 
 
 if __name__ == '__main__':
@@ -74,14 +89,12 @@ if __name__ == '__main__':
     }
 
     app = tornado.web.Application([
-        ('/', MainHandler),
-        ('/form', FormHandler),
-        ('/file', FileFormHandler),
-        ('/sequence', BaseHandler)
+        (r'/', MainHandler),
+        (r'/form', FormHandler),
+        (r'/file', FileFormHandler),
+        (r'/sequence', SequenceHandler, {'key': 'test'})
     ], **settings)
 
     app.listen(9999)
-    logging.info('start ..')
     logging.warning('start ..')
-    logging.debug('start debug')
     tornado.ioloop.IOLoop.current().start()
