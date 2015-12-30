@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # coding=utf-8
+import logging
 import os
 import uuid
 
-import tornado.web
 import tornado.ioloop
+import tornado.web
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -14,7 +15,6 @@ class MainHandler(tornado.web.RequestHandler):
             '<html><body><form action="/form" method="POST">'
             '<input type="text" name="msg">'
             '<input type="text" name="msg">'
-            '<input type="file" name="file">'
             '<input type="submit" value="Submit">'
             '</form></body></html>'
         )
@@ -59,6 +59,15 @@ class FileFormHandler(tornado.web.RequestHandler):
                     % (fname, cname))
 
 
+class BaseHandler(tornado.web.RequestHandler):
+
+    def get(self):
+        pass
+
+    def post(self):
+        pass
+
+
 if __name__ == '__main__':
     settings = {
         'debug': True
@@ -67,9 +76,12 @@ if __name__ == '__main__':
     app = tornado.web.Application([
         ('/', MainHandler),
         ('/form', FormHandler),
-        ('/file', FileFormHandler)
+        ('/file', FileFormHandler),
+        ('/sequence', BaseHandler)
     ], **settings)
 
     app.listen(9999)
-    print 'start ..'
+    logging.info('start ..')
+    logging.warning('start ..')
+    logging.debug('start debug')
     tornado.ioloop.IOLoop.current().start()
