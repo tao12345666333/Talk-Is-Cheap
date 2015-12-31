@@ -83,6 +83,15 @@ class SequenceHandler(BaseHandler):
         logging.warn('SequenceHandler post ..')
 
 
+class RedirectHandler(BaseHandler):
+
+    def initialize(self, url):
+        self.url = url
+
+    def get(self):
+        self.redirect(self.url)
+
+
 if __name__ == '__main__':
     settings = {
         'debug': True
@@ -92,7 +101,8 @@ if __name__ == '__main__':
         (r'/', MainHandler),
         (r'/form', FormHandler),
         (r'/file', FileFormHandler),
-        (r'/sequence', SequenceHandler, {'key': 'test'})
+        (r'/sequence', SequenceHandler, {'key': 'test'}),
+        (r'/redirect', RedirectHandler, {'url': '/file'})
     ], **settings)
 
     app.listen(9999)
