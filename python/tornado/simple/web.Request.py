@@ -89,7 +89,7 @@ class RedirectHandler(BaseHandler):
         self.url = url
 
     def get(self):
-        self.redirect(self.url)
+        self.redirect(self.url, status=302)
 
 
 if __name__ == '__main__':
@@ -102,7 +102,8 @@ if __name__ == '__main__':
         (r'/form', FormHandler),
         (r'/file', FileFormHandler),
         (r'/sequence', SequenceHandler, {'key': 'test'}),
-        (r'/redirect', RedirectHandler, {'url': '/file'})
+        (r'/redirect', RedirectHandler, {'url': '/file'}),
+        (r'/webredirect', tornado.web.RedirectHandler, {'url': '/file'})
     ], **settings)
 
     app.listen(9999)
