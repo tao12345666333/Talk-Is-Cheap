@@ -6,6 +6,9 @@ import uuid
 
 import tornado.ioloop
 import tornado.web
+import tornado.gen
+import tornado.httpclient
+import tornado.escape
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -92,6 +95,16 @@ class RedirectHandler(BaseHandler):
         self.redirect(self.url, status=302)
 
 
+class AsyncHandler(tornado.web.RequestHandler):
+
+    @tornado.gen.coroutine
+    def get(self):
+        http = tornado.httpclient.AsyncHTTPClient()
+        res = yield http.fetch('https://api.github.com/users/tao12345666333/orgs')
+        json = tornado.escape.json_decode(res.body)
+        self.write(json)
+
+
 if __name__ == '__main__':
     settings = {
         'debug': True
@@ -103,7 +116,8 @@ if __name__ == '__main__':
         (r'/file', FileFormHandler),
         (r'/sequence', SequenceHandler, {'key': 'test'}),
         (r'/redirect', RedirectHandler, {'url': '/file'}),
-        (r'/webredirect', tornado.web.RedirectHandler, {'url': '/file'})
+        (r'/webredirect', tornado.web.RedirectHandler, {'url': '/file'}),
+        (r'/async', AsyncHandler)
     ], **settings)
 
     app.listen(9999)
