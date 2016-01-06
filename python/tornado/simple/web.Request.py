@@ -9,6 +9,7 @@ import tornado.web
 import tornado.gen
 import tornado.httpclient
 import tornado.escape
+import time
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -100,9 +101,22 @@ class AsyncHandler(tornado.web.RequestHandler):
     @tornado.gen.coroutine
     def get(self):
         http = tornado.httpclient.AsyncHTTPClient()
-        res = yield http.fetch('https://api.github.com/users/tao12345666333/orgs')
+        res = yield http.fetch('http://apis.baidu.com/heweather/pro/attractions')
         json = tornado.escape.json_decode(res.body)
         self.write(json)
+
+    @tornado.web.asynchronous
+    def post(self):
+        http = tornado.httpclient.AsyncHTTPClient()
+        http.fetch('http://apis.baidu.com/heweather/pro/attractions', callback=self.on_response)
+
+    def on_response(self, res):
+        if res.error:
+            raise tornado.web.HTTPError(500)
+
+        json = tornado.escape.json_decode(res.body)
+        self.write(json)
+        self.finish()
 
 
 if __name__ == '__main__':
