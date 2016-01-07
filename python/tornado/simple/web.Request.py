@@ -9,7 +9,6 @@ import tornado.web
 import tornado.gen
 import tornado.httpclient
 import tornado.escape
-import time
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -119,9 +118,16 @@ class AsyncHandler(tornado.web.RequestHandler):
         self.finish()
 
 
+class PageHandler(tornado.web.RequestHandler):
+
+    def get(self):
+        self.render('template.html', title='test', items=map(str, range(10)))
+
+
 if __name__ == '__main__':
     settings = {
-        'debug': True
+        'debug': True,
+        'compiled_template_cache': False
     }
 
     app = tornado.web.Application([
@@ -131,7 +137,8 @@ if __name__ == '__main__':
         (r'/sequence', SequenceHandler, {'key': 'test'}),
         (r'/redirect', RedirectHandler, {'url': '/file'}),
         (r'/webredirect', tornado.web.RedirectHandler, {'url': '/file'}),
-        (r'/async', AsyncHandler)
+        (r'/async', AsyncHandler),
+        (r'/page', PageHandler)
     ], **settings)
 
     app.listen(9999)
