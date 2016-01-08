@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>{{ title }}</title>
+      <!--<title>{{ title }}</title>-->
+      <title>{{ handler.request.path }}</title>
    </head>
    <body>
      <ul>
@@ -10,4 +11,4 @@
        {% end %}
      </ul>
    </body>
- </html>
+</html>

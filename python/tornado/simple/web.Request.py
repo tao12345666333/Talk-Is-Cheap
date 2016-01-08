@@ -121,6 +121,8 @@ class AsyncHandler(tornado.web.RequestHandler):
 class PageHandler(tornado.web.RequestHandler):
 
     def get(self):
+        logging.warning(self.request.path)
+
         self.render('template.html', title='test', items=map(str, range(10)))
 
 
