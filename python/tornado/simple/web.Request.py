@@ -9,6 +9,7 @@ import tornado.web
 import tornado.gen
 import tornado.httpclient
 import tornado.escape
+import tornado.locale
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -122,6 +123,8 @@ class PageHandler(tornado.web.RequestHandler):
 
     def get(self):
         logging.warning(self.request.path)
+        logging.warning(tornado.locale.get_supported_locales())
+        logging.warning(self.locale.name)
 
         self.render('template.html', title='test', items=map(str, range(10)))
 
