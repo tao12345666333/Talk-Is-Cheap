@@ -24,7 +24,7 @@ class MainHandler(tornado.web.RequestHandler):
 
     def get(self):
         if not self.get_secure_cookie('mycookie'):
-            self.set_secure_cookie('mycookie', 'mycookievalue')
+            self.set_secure_cookie('mycookie', 'mycookievalue', expires_days=2)
             self.write('cookie_secret not set yet')
         else:
             self.write('cookie_secret set')
@@ -34,7 +34,12 @@ if __name__ == '__main__':
     settings = {
         'debug': True,
         'compiled_template_cache': False,
-        'cookie_secret': 'test_cookie'
+        # 'cookie_secret': 'test_cookie'
+        'cookie_secret': {
+            1: 'test',
+            2: 'my'
+        },
+        'key_version': 1
     }
 
     app = tornado.web.Application([
