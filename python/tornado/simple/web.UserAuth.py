@@ -3,6 +3,7 @@
 import tornado.web
 import tornado.ioloop
 import tornado.escape
+import tornado.httpserver
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -47,7 +48,12 @@ if __name__ == '__main__':
         (r'/login', LoginHandler)
     ], **settings)
 
-    app.listen(9999)
+    server = tornado.httpserver.HTTPServer(app)
+
+    server.bind(9999)
+    server.start(1)
+
+    # app.listen(9999)
     print 'start..'
 
     tornado.ioloop.IOLoop.current().start()
