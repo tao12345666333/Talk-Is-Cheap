@@ -37,7 +37,7 @@ class LoginHandler(BaseHandler):
 
 if __name__ == '__main__':
     config = {
-        'debug': True,
+        'autoreload': True,
         'cookie_secret': 'testcookie',
         'login_url': '/login',
         # 'xsrf_cookies': True
