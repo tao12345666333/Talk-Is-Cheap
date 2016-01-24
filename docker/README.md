@@ -54,11 +54,27 @@ docker run --rm -ti ubuntu /bin/bash
 docker stop $job_name # 停止
 docker restart $job_name # 重启
 docker logs $job_name # 查看日志
-docker rm %job_name # 移除
+docker rm $job_name # 移除
 docker commit $job_name $new_name # 把状态保存成为镜像
 
 docker pull image # pull镜像
 ```
+
+* 进入container
+    ```
+    docker attach $container_id # 这种方式局限性太大. 不建议
+
+    # 修改docker以lxc方式启动
+    vim /etc/default/docker 增加 DOCKER_OPTS="-e lxc"
+    sudo service docker restart
+
+    sudo lxc-attach -n id # 这样的前提是docker要以lxc方式启动
+
+    # 还有一种使用nsenter 的方式,还没研究过.
+
+    # 1.3版本后增加了exec的命令, 很方便,我很喜欢
+    docker exec -it $container_id cmd
+    ```
 
 # Dockerfile
 
