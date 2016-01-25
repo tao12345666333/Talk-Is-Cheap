@@ -92,3 +92,10 @@ docker pull image # pull镜像
 * `ENV` 环境变量 `ENV <key> <value>`
 * `USER` 运行时设置uid
 * `VOLUME` 授权访问从容器内到主机上的目录 `VOLUME ['/data']`
+
+# Redis
+
+可以通过下面的命令来把redis container 的6379端口映射到本地
+```
+docker run -d --name redis -p 6379:6379 redis
+```
