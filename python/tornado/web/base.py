@@ -15,6 +15,10 @@ class MainHandler(BaseHandler):
         require = self.get_argument('param')
         option = self.get_argument('option', default='test')
 
+        self.write(
+            'require param : %s, option: %s' % (require, option)
+        )
+
 
 if __name__ == '__main__':
     settings = {
