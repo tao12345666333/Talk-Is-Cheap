@@ -6,17 +6,18 @@ import tornado.ioloop
 
 class BaseHandler(tornado.web.RequestHandler):
 
-    pass
+    def set_default_headers(self):
+        self._headers.add('Access-Control-Allow-Origin', '*')
 
 
 class MainHandler(BaseHandler):
 
     def get(self):
-        require = self.get_argument('param')
-        option = self.get_argument('option', default='test')
+        status = self.get_status()
+        self.set_header('Cache-control', 'no-cache')
 
         self.write(
-            'require param : %s, option: %s' % (require, option)
+            'Tornado ! %s' % status
         )
 
 
