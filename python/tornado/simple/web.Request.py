@@ -155,6 +155,12 @@ class TemplateHandler(tornado.web.RequestHandler):
         self.render('mako_template.html', content='Hello Mako!')
 
 
+class VirtualHandler(tornado.web.RequestHandler):
+
+    def get(self):
+        self.write('Virtual Host!')
+
+
 if __name__ == '__main__':
     settings = {
         'debug': True,
@@ -172,6 +178,10 @@ if __name__ == '__main__':
         (r'/page', PageHandler),
         (r'/template', TemplateHandler)
     ], **settings)
+
+    app.add_handlers(r'www\.moelove\.com', [
+        (r'/virtual', VirtualHandler),
+    ])
 
     app.listen(9999)
     logging.warning('start ..')
