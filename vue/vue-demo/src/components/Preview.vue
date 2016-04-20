@@ -19,7 +19,7 @@
     <div>
       <button v-on:click="on_btn">Click</button>
     </div>
-  </div>
+  </di>
 
   <div class="preview">
     <div>
@@ -36,6 +36,8 @@ export default {
       msg: 'Hello World!',
       nmsg: ['a', 'b', 'c'],
     };
+  },
+  methods() {
   },
 };
 </script>
