@@ -12,6 +12,14 @@
 import Preview from './components/Preview';
 
 export default {
+  data () {
+    return {
+      menu: [{
+        urlName: 'github',
+        name: 'Github'
+      }]
+    }
+  },
   components: {
     Preview,
   },
