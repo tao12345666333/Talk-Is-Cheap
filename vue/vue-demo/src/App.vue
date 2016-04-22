@@ -1,27 +1,25 @@
 <template>
   <div id="app">
-    <hello></hello>
-    <preview></preview>
-    <p>
-      Welcome to your Vue.js app!
-    </p>
+    <header id="header" class="header">
+      <div class="logo">
+        <img src="./assets/logo.png" alt="">
+      </div>
+    </header>
+    <div class="mark">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import Preview from './components/Preview';
-
 export default {
-  data () {
+  data() {
     return {
       menu: [{
-        urlName: 'github',
-        name: 'Github'
-      }]
-    }
-  },
-  components: {
-    Preview,
+        urlName: 'mark',
+        name: 'Markdown',
+      }],
+    };
   },
 };
 </script>
@@ -52,7 +50,20 @@ body {
 }
 
 .logo {
-  width: 100px;
-  height: 100px
+  float: left;
+  margin-right: 10px;
 }
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+code {
+  color: #e96900;
+  padding: 3px 5px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
 </style>
