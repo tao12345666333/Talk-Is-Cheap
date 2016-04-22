@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 const router = new VueRouter();
 
 router.map({
-  '/mark/': {
+  '/': {
     name: 'mark',
     component: Mark,
   },

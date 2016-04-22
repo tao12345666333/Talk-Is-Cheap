@@ -55,15 +55,8 @@ body {
 }
 
 .logo img {
-  width: 40px;
-  height: 40px;
-}
-
-code {
-  color: #e96900;
-  padding: 3px 5px;
-  border-radius: 2px;
-  white-space: nowrap;
+  width: 100%;
+  height: 100%;
 }
 
 </style>
