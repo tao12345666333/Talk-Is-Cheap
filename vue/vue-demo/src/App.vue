@@ -1,13 +1,17 @@
 <template>
-  <div id="app">
-    <header id="header" class="header">
-      <div class="logo">
-        <img src="./assets/logo.png" alt="">
-      </div>
-    </header>
-    <div class="mark">
-      <router-view></router-view>
-    </div>
+  <div id="header" class="header">
+    <a class="logo">
+      <img src="./assets/logo.png" alt="">
+      <span>Vue-Markdown-Editor</span>
+    </a>
+    <ul class="nav">
+      <li>
+        <a href="https://github.com/tao12345666333/Talk-Is-Cheap">Github</a>
+      </li>
+    </ul>
+  </div>
+  <div class="mark">
+    <router-view></router-view>
   </div>
 </template>
 
@@ -25,38 +29,57 @@ export default {
 </script>
 
 <style>
+
 html {
   height: 100%;
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #34495e;
+  margin: 0;
 }
 
-#app {
-  color: #2c3e50;
-  margin-top: -100px;
-  max-width: 600px;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
-  text-align: center;
-}
-
-#app a {
-  color: #42b983;
+a {
   text-decoration: none;
+  color: #34495e;
 }
 
 .logo {
-  float: left;
-  margin-right: 10px;
+  display: inline-block;
+  font-size: 1.5em;
+  line-height: 40px;
+  color: #2c3e50;
+  font-family: 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
 }
 
 .logo img {
-  width: 100%;
-  height: 100%;
+  vertical-align: middle;
+  margin-right: 6px;
+  width: 40px;
+  height: 40px;
+}
+
+#header {
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,0.25);
+  padding: 25px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 60px;
+    top: 25px;
+    height: 40px;
+    line-height: 40px;
 }
 
 </style>
