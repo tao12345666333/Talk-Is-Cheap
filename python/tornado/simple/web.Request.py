@@ -10,6 +10,7 @@ import tornado.gen
 import tornado.httpclient
 import tornado.escape
 import tornado.locale
+import tornado.websocket
 
 import mako.lookup
 import mako.template
@@ -161,6 +162,21 @@ class VirtualHandler(tornado.web.RequestHandler):
         self.write('Virtual Host!')
 
 
+class WebSockethandler(tornado.websocket.WebSocketHandler):
+
+    def open(self):
+        print('open websocket')
+
+    def on_message(self, message):
+        self.write_message(u'receive msg %s' % message)
+
+    def on_close(self):
+        print('close websocket')
+
+    def check_origin(self, origin):
+        return True
+
+
 if __name__ == '__main__':
     settings = {
         'debug': True,
@@ -176,7 +192,8 @@ if __name__ == '__main__':
         (r'/webredirect', tornado.web.RedirectHandler, {'url': '/file'}),
         (r'/async', AsyncHandler),
         (r'/page', PageHandler),
-        (r'/template', TemplateHandler)
+        (r'/template', TemplateHandler),
+        (r'/websocket', WebSockethandler)
     ], **settings)
 
     app.add_handlers(r'www\.moelove\.com', [
