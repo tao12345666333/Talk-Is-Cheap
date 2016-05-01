@@ -30,6 +30,12 @@ class MainHandler(tornado.web.RequestHandler):
             self.write('cookie_secret set')
 
 
+class THandler(tornado.web.RequestHandler):
+
+    def get(self):
+        self.write('not cookie set')
+
+
 if __name__ == '__main__':
     settings = {
         'debug': True,
@@ -44,7 +50,8 @@ if __name__ == '__main__':
 
     app = tornado.web.Application([
         (r'/', WebHandler),
-        (r'/main', MainHandler)
+        (r'/main', MainHandler),
+        (r'/t', THandler)
     ], **settings)
 
     app.listen(9999)
