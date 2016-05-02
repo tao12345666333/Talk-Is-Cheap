@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-import logging
+import os
 
 import tornado.ioloop
 import tornado.web
@@ -14,11 +14,8 @@ import tornado.options
 
 from tornado.options import define, options
 
-options.logging = 'debug'
-define("port", default=9999, help="run on the given port", type=int)
 
-
-class MainHandler(tornado.web.RequestHandler):
+class BaseHandler(tornado.web.RequestHandler):
 
     def get(self):
         # self.write(
@@ -28,6 +25,7 @@ class MainHandler(tornado.web.RequestHandler):
             # '<input type="submit" value="Submit">'
             # '</form></body></html>'
         # )
+        self._reason = 'test get'
         self.write('get')
 
     def post(self):
@@ -63,19 +61,37 @@ class AsyncHandler(tornado.web.RequestHandler):
 
 
 if __name__ == '__main__':
-    tornado.options.parse_command_line()
+
+    options.logging = 'ERROR'
     settings = {
-        'debug': True,
-        'compiled_template_cache': False
+        'xheaders': True,
+        'cookie_secret': '_the_cookie_secret',
+        'xsrf_cookies': True,
     }
 
+    if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), '__test__')):
+        # DEBUG Model
+        options.logging = 'DEBUG'
+        debug_settings = {
+            'debug': True,
+            # each of which is also available as an individual flag
+            'autoreload': True,
+            'compiled_template_cache': False,
+            'static_hash_cache': False,
+            'server_traceback': True
+        }
+
+        settings.update(debug_settings)
+
+    define("port", default=9999, help="run on the given port", type=int)
+    tornado.options.parse_command_line()
+
     app = tornado.web.Application([
-        (r'/', MainHandler),
+        (r'/', BaseHandler),
         (r'/async', AsyncHandler),
     ], **settings)
 
-    # app.listen(9999)
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
-    logging.warning('start ..')
+    print 'system start ...'
     tornado.ioloop.IOLoop.current().start()

@@ -15,7 +15,7 @@ import tornado.options
 from tornado.options import define, options
 
 options.logging = 'debug'
-define("port", default=9999, help="run on the given port", type=int)
+# define("port", default=9999, help="run on the given port", type=int)
 
 
 class MainHandler(tornado.web.RequestHandler):
