@@ -1,0 +1,3 @@
+Log file head
+Log
+Function

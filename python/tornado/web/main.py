@@ -11,6 +11,7 @@ import tornado.locale
 import tornado.websocket
 import tornado.httpserver
 import tornado.options
+import tornado.log
 
 from tornado.options import define, options
 
@@ -25,7 +26,7 @@ class BaseHandler(tornado.web.RequestHandler):
             # '<input type="submit" value="Submit">'
             # '</form></body></html>'
         # )
-        self._reason = 'test get'
+        tornado.log.app_log.debug('test')
         self.write('get')
 
     def post(self):
