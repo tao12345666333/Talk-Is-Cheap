@@ -34,3 +34,9 @@ awk 'BEGIN{ print "start" } pattern { commands } END{ print "end" }'
         ```bash
         result=$(awk -v num1=1.2 -v num2=3 'BEGIN {printf "%.2f", num1*num2}')
         ```
+
+## date
+
+```bash
+date "+%Y %B %d %A %H %M %S %N %s"
+```
