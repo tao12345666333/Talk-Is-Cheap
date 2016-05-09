@@ -40,3 +40,13 @@ awk 'BEGIN{ print "start" } pattern { commands } END{ print "end" }'
 ```bash
 date "+%Y %B %d %A %H %M %S %N %s"
 ```
+
+## 调试
+
+```bash
+bash -xv xx.sh
+```
+
+## 判断
+
+test
