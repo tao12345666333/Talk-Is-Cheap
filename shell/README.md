@@ -50,3 +50,18 @@ bash -xv xx.sh
 ## 判断
 
 test
+
+
+## tr
+
+* alnum 字母和数字
+* alpha 字母
+* cntrl 控制字符
+* digit 数字
+* graph 图形字符
+* lower 小写字母
+* print 可打印字符
+* punct 标点符号
+* space 空白字符
+* upper 大写字母
+* xdigit 十六进制字符
