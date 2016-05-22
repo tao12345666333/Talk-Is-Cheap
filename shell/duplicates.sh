@@ -1,5 +1,5 @@
 #!/bin/bash
-# 删除重复文件，只保留一份
+# 找到同样大小的文件 写入 duplicates_files
 
 ls -lS --time-style=long-iso | awk 'BEGIN {
     getline; getline;
@@ -19,4 +19,4 @@ ls -lS --time-style=long-iso | awk 'BEGIN {
     size=$5; name1=name2;
 }' | sort -u > duplicates_files
 
-cat duplicates_files | xargs -I {} md5sum {} | sort | uniq -w 32 | awk '{ print "^"$2"$" }' | sort -u > duplicates_xx
+#cat duplicates_files | xargs -I {} md5sum {} | sort | uniq -w 32 | awk '{ print "^"$2"$" }' | sort -u > duplicates_xx
