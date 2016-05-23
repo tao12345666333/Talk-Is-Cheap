@@ -65,3 +65,20 @@ test
 * space 空白字符
 * upper 大写字母
 * xdigit 十六进制字符
+
+
+## bash执行的优先顺序
+
+1. 别名：alias
+2. 关键字：keyword
+3. 函数：function
+4. 内建命令：built in
+5. 哈希索引：hash
+6. 外部命令：command
+
+
+# bash中开启alias
+
+```bash
+shopt -s expand_aliases
+```
