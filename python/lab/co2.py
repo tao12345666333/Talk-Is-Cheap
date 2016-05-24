@@ -32,5 +32,6 @@ def task(name, times):
 if __name__ == "__main__":
     Runner([
         task('tb', 6),
-        task('py', 3)
+        task('py', 3),
+        task('cy', 3)
     ]).run()
