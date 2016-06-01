@@ -86,3 +86,9 @@ shopt -s expand_aliases
 ```bash
 tree PATH -H PATH -o tree.html
 ```
+
+# wget
+
+```bash
+wget --limit-rate 20k http://moelove.info
+```
