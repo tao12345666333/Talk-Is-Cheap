@@ -90,5 +90,6 @@ tree PATH -H PATH -o tree.html
 # wget
 
 ```bash
-wget --limit-rate 20k http://moelove.info
+wget --limit-rate 20k http://moelove.info # 限速
+wget -Q 100m http://moelove.info https://github.com/tao12345666333 # 队列
 ```
