@@ -93,3 +93,14 @@ tree PATH -H PATH -o tree.html
 wget --limit-rate 20k http://moelove.info # 限速
 wget -Q 100m http://moelove.info https://github.com/tao12345666333 # 队列
 ```
+
+
+# bash脚本中 `$#` 代表参数数量
+
+```bash
+if [ $# -eq 0 ];
+then
+    echo "need param"
+    exit -1
+fi
+```
