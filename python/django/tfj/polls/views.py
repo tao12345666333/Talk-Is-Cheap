@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.views.decorators.http import require_http_methods
 from django.core.urlresolvers import reverse
 from django.template import loader
 from django.views import generic
@@ -15,6 +16,7 @@ class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
+    @require_http_methods(['GET', 'POST'])
     def get_queryset(self):
         # return Question.objects.order_by('-pub_date')[:5]
         return Question.objects.filter(
@@ -32,6 +34,9 @@ class DetailView(generic.DeleteView):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
+
+    def view(request):
+        return HttpResponseNotFound('<h1>Page not found</h1>')
 
 
 def index(request):
