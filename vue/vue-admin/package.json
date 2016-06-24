@@ -1,0 +1,28 @@
+{
+  "name": "vue-admin",
+  "version": "0.0.0",
+  "description": "A vue admin project.",
+  "private": false,
+  "keywords": [
+  ],
+  "scripts": {
+    "dev": "cooking watch",
+    "dist": "cooking build -p",
+    "deploy": "cooking build --no-color"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tao12345666333/Talk-Is-Cheap/vue-admin.git"
+  },
+  "homepage": "https://github.com/tao12345666333/Talk-Is-Cheap/vue-admin#readme",
+  "bugs": {
+    "url": "https://github.com/tao12345666333/Talk-Is-Cheap/vue-admin/issues"
+  },
+  "author": "TaoBeier",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^1.0.0"
+  },
+  "devDependencies": {
+  }
+}
