@@ -8,6 +8,9 @@
       <li>
         <a href="https://github.com/tao12345666333/Talk-Is-Cheap">Github</a>
       </li>
+      <li>
+        <a v-link="{ path: '/foo' }">Foo</a>
+      </li>
     </ul>
   </div>
   <div class="mark">
