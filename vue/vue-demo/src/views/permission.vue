@@ -1,6 +1,7 @@
 <template>
   <div>
     Permission
+    <button class="btn btn-info"></button>
   </div>
 </template>
 

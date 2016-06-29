@@ -85,4 +85,16 @@ a {
     line-height: 40px;
 }
 
+ul {
+    list-style: none;
+}
+
+ul li {
+    float: left;
+}
+
+ul li a {
+    padding: 4px;
+}
+
 </style>
