@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Mark from './components/Mark';
-import permission from './views/permission';
+import topic from './views/topic';
 
 Vue.use(VueRouter);
 
@@ -14,8 +14,8 @@ router.map({
     component: Mark,
   },
   '/foo': {
-    name: 'permission',
-    component: permission,
+    name: 'topic',
+    component: topic,
   },
 });
 
