@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import Mark from './components/Mark';
 import topic from './views/topic';
+import topicItem from './views/topicItem';
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,10 @@ router.map({
   '/foo': {
     name: 'topic',
     component: topic,
+  },
+  '/foo/:topic_id': {
+    name: 'detail',
+    component: topicItem,
   },
 });
 

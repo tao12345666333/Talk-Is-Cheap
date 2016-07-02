@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-   <ul>
-     <li v-for="topic in topics">
-       {{ topic }}
-     </li>
-   </ul>
+    <ul>
+      <li v-for="topic in topics">
+        {{ topic.title }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -24,11 +24,11 @@ export default {
     data(transition) {
       api.topic.list(resp => {
         transition.next({
-          topics: resp.data,
-        })
-      })
-    }
-  }
+          topics: resp.data.data,
+        });
+      });
+    },
+  },
 };
 </script>
 
