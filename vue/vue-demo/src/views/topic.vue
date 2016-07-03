@@ -1,10 +1,7 @@
 <template>
   <div class="container">
-    <ul>
-      <li v-for="topic in topics">
-        {{ topic.title }}
-      </li>
-    </ul>
+    <topic-item v-for="topic in topics" :topic="topic">
+    </topic-item>
   </div>
 </template>
 
@@ -15,10 +12,6 @@ export default {
     return {
       topics: [],
     };
-  },
-  methods: {
-    getTopics() {
-    },
   },
   route: {
     data(transition) {

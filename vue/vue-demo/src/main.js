@@ -5,6 +5,10 @@ import Mark from './components/Mark';
 import topic from './views/topic';
 import topicItem from './views/topicItem';
 
+Vue.component('mark', Mark);
+Vue.component('topic', topic);
+Vue.component('topic-item', topicItem);
+
 Vue.use(VueRouter);
 
 const router = new VueRouter();
