@@ -9,14 +9,25 @@
 </template>
 
 <script>
+import api from '../api';
 
 export default {
   data() {
     return {
-      topic: Object,
+      topic: {},
     };
   },
-}; 
+  route: {
+    data(transition) {
+      const id = transition.to.params.topicId;
+      api.topic.detail(id, resp => {
+        transition.next({
+          topic: resp.data.data
+        });
+      });
+    },
+  },
+};
 
 </script>
 
