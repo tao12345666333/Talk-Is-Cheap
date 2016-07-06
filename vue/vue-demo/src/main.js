@@ -4,10 +4,12 @@ import VueRouter from 'vue-router';
 import Mark from './components/Mark';
 import topic from './views/topic';
 import topicItem from './views/topicItem';
+import Bar from './views/Bar';
 
 Vue.component('mark', Mark);
 Vue.component('topic', topic);
 Vue.component('topic-item', topicItem);
+Vue.component('bar', Bar);
 
 Vue.use(VueRouter);
 
@@ -25,6 +27,10 @@ router.map({
   '/foo/:topic_id': {
     name: 'detail',
     component: topicItem,
+  },
+  '/bar': {
+    name: 'bar',
+    component: bar,
   },
 });
 
