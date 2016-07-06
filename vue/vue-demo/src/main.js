@@ -30,7 +30,7 @@ router.map({
   },
   '/bar': {
     name: 'bar',
-    component: bar,
+    component: Bar,
   },
 });
 
