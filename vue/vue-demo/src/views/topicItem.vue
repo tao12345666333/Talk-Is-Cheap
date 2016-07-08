@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h3>{{ topic.title }}</h3>
+    <a v-link="{name: 'detail', params: {topic_id: topic.id}}">
+      <h3>{{ topic.title }}</h3>
+    </a>
     <h4>{{ topic.id }}</h4>
     <div>
       {{ topic.content }}
@@ -15,12 +17,14 @@ export default {
   props: {
     topic: {
       type: Object,
-      default: {},
+      default() {
+        return {};
+      },
     },
   },
   route: {
     data(transition) {
-      api.topic.detail((id, resp) => {
+      api.topic.detail(this.$route.params.topic_id, resp => {
         transition.next({
           topic: resp.data.data,
         });

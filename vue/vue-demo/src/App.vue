@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="header" class="header">
     <a class="logo">
       <img src="./assets/logo.png" alt="">
@@ -16,6 +17,7 @@
   <div class="mark">
     <router-view></router-view>
   </div>
+</div>
 </template>
 
 <script>
