@@ -3,11 +3,13 @@ import VueRouter from 'vue-router';
 
 import Mark from './components/Mark';
 import topic from './views/topic';
+import topics from './views/topics';
 import topicItem from './views/topicItem';
 import Bar from './views/Bar';
 
 Vue.component('mark', Mark);
 Vue.component('topic', topic);
+Vue.component('topics', topics);
 Vue.component('topic-item', topicItem);
 Vue.component('bar', Bar);
 
@@ -23,6 +25,10 @@ router.map({
   '/foo': {
     name: 'topic',
     component: topic,
+  },
+  '/foos/:pageNum': {
+    name: 'topics',
+    component: topics,
   },
   '/foo/:topic_id': {
     name: 'detail',
