@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <button @click="next">Next page</button>
+      <button @click="next"  v-link="{ name: 'topics', params: { pageNum: page } }">Next page</button>
     </div>
     <topic-item v-for="topic in topics" :topic="topic">
     </topic-item>
@@ -14,18 +14,17 @@ export default {
   data() {
     return {
       topics: [],
+      page: parseInt(this.$route.params.pageNum, 0),
     };
   },
   methods: {
     next() {
-      api.topic.list(this.$route.params.pageNum, resp => {
-        this.topics = resp.data.data;
-      });
+      this.page += 1;
     },
   },
   route: {
     data(transition) {
-      api.topic.list(this.$route.params.pageNum, resp => {
+      api.topic.list(this.page, resp => {
         transition.next({
           topics: resp.data.data,
         });
