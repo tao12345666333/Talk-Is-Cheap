@@ -6,6 +6,7 @@ import topic from './views/topic';
 import topics from './views/topics';
 import topicItem from './views/topicItem';
 import Bar from './views/Bar';
+import Tab from './views/Tab';
 
 Vue.component('mark', Mark);
 Vue.component('topic', topic);
@@ -37,6 +38,10 @@ router.map({
   '/bar': {
     name: 'bar',
     component: Bar,
+  },
+  '/tab': {
+    name: 'tab',
+    component: Tab,
   },
 });
 

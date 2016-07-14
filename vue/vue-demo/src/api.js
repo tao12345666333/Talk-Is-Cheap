@@ -30,3 +30,12 @@ exports.topic = {
     Vue.http.get(url).then(cb, eb);
   },
 };
+
+const localhost = '';
+
+exports.tabset = {
+  list(cb, eb) {
+    Vue.http.get(`${localhost}/api/tab`)
+    .then(cb, eb);
+  },
+};
