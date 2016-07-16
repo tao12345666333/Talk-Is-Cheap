@@ -12,9 +12,12 @@
       <li>
         <a v-link="{ path: '/foo' }">Foo</a>
       </li>
+      <li>
+        <a v-link="{ name: 'tab' }">Tab</a>
+      </li>
     </ul>
   </div>
-  <div class="mark">
+  <div>
     <router-view></router-view>
   </div>
 </div>
