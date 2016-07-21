@@ -9,7 +9,9 @@ module.exports = {
   'rules': {
     'strice': 0,
     'quotes': 0,
+    'no-shadow': ['error', { 'builtinGlobals': false, 'hoist': 'never', 'allow': ['state'] }],
+    'no-param-reassign':  ['error', { 'props': false,}],
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
   }
 }

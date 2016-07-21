@@ -1,18 +1,16 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const state = {
   notes: [],
   activeNote: {},
-  show: '',
 };
 
 const mutations = {
   initStore(state, data) {
     state.notes = data.notes;
-    state.show = data.show;
     state.activeNote = data.activeNote;
   },
 
@@ -29,9 +27,8 @@ const mutations = {
 
   editNote(state, note) {
     state.activeNote = note;
-
-    for(let i =0; i < state.notes.length; i++) {
-      if(state.notes[i].id === note.id) {
+    for (let i = 0; i < state.notes.length; i++) {
+      if (state.notes[i].id === note.id) {
         state.notes[i] = note;
         break;
       }
@@ -39,12 +36,11 @@ const mutations = {
   },
 
   setActiveNote(state, note) {
-    state.activeNote = notes;
+    state.activeNote = note;
   },
 };
 
 export default new Vuex.Store({
-// share
   state,
   mutations,
 });
