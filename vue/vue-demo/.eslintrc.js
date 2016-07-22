@@ -9,6 +9,7 @@ module.exports = {
   'rules': {
     'strice': 0,
     'quotes': 0,
+    'arrow-body-style': ['error', 'always'],
     'no-shadow': ['error', { 'builtinGlobals': false, 'hoist': 'never', 'allow': ['state'] }],
     'no-param-reassign':  ['error', { 'props': false,}],
     // allow debugger during development
