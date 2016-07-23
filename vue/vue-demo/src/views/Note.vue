@@ -2,6 +2,11 @@
   <div>
     <div id="notes-list">
       <div class="header">
+        <div class="form-group">
+          <input name="title" type="text" v-model="currentNote.title">
+          <textarea name="content" cols="30" rows="10" v-model="currentNote.content">
+          </textarea>
+        </div>
       </div>
       <div class="content">
         <div v-for="note in Notes">
@@ -32,6 +37,9 @@ export default {
       Notes,
       activeNote,
     },
+  },
+  computed: {
+    currentNote: activeNote,
   },
   ready() {
     this.initStore();
