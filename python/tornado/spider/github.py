@@ -1,10 +1,19 @@
 #!/usr/bin/env python
 # coding=utf-8
+from __future__ import unicode_literals
+
+import re
 
 import tornado.httpserver
 import tornado.options
 import tornado.web
 from tornado.options import define, options
+
+import requests
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 define("port", default=8000, help="run on the given port", type=int)
@@ -41,10 +50,29 @@ class MainHandler(tornado.web.RequestHandler):
         url = self.get_argument('url')
 
         if key != 'rz':
+            self.redirect('/?status=fail')
             return
 
         if not url.startswith('http'):
+            self.redirect('/?status=fail')
             return
+
+        res = requests.get(url, verify=False)
+        if res.status_code != 200:
+            self.redirect('/?status=fail')
+            return
+
+        title = re.findall(r'<title>(.*?)</title>', res.content)[0]
+        print 'title is: %s' % title.decode('utf-8')
+
+        title = unicode(title, 'utf8')
+
+        if not title:
+            self.redirect('/?status=fail')
+            return
+
+        with open('Readme.md', 'a+') as f:
+            f.write('* [{0}]({1})\n\n'.format(title, url))
 
         self.redirect('/?status=success')
 
