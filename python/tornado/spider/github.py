@@ -57,7 +57,7 @@ class MainHandler(tornado.web.RequestHandler):
             self.redirect('/?status=fail')
             return
 
-        res = requests.get(url, verify=False)
+        res = requests.get(url, verify=False, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'})
         if res.status_code != 200:
             self.redirect('/?status=fail')
             return
