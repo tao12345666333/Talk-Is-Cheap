@@ -12,7 +12,7 @@ module.exports = {
   dev: {
     port: 8888,
     proxyTable: {
-      '/api/*': 'http://127.0.0.1:9999',
+      '/api/*': 'http://127.0.0.1:6666',
     }
   }
 }
