@@ -1,6 +1,10 @@
 <!--moe.wxml-->
 <view class="container">
   <block wx:for="{{moes}}" wx:for-item="moe">
-    <text>{{index + 1}}. {{moe}}</text>
+    <text class="title">{{moe.title}}</text>
+    <text class="time">{{moe.time}}</text>
+    <image class="banner" src="{{moe.banner}}" ></image>
+    <text class="intro">{{moe.intro}}</text>
+    <div class="more">查看全文</div>
   </block>
 </view>
