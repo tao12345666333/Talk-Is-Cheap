@@ -1,0 +1,6 @@
+<!--moe.wxml-->
+<view class="container">
+  <block wx:for="{{moes}}" wx:for-item="moe">
+    <text>{{index + 1}}. {{moe}}</text>
+  </block>
+</view>
