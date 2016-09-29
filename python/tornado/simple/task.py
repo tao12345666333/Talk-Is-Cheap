@@ -1,16 +1,35 @@
 #!/usr/bin/env python
 # coding=utf-8
-from tornado import ioloop, gen
+
+import pymongo
+import redis
+
+mc = pymongo.MongoClient()
+r = redis.Redis()
 
 
-@gen.coroutine
-def task():
+class TaskManager():
 
-    for i in range(10):
-        print i
-        yield i
+    def __init__(self):
+        pass
+
+    def get_tasks(self):
+        pass
+
+    def save_task(self):
+        pass
+
+
+class RunTask():
+
+    def __init__(self):
+        pass
+
+    def do(self):
+        """run task
+        """
+        pass
 
 
 if __name__ == '__main__':
-    io_loop = ioloop.IOLoop.current()
-    ioloop.run_sync(task)
+    pass
