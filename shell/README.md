@@ -119,3 +119,26 @@ fi
 * 创建设备 `mknod` 主设备 次设备
 * `/dev/random` 真随机数发生器
 * `/dev/urandom` 伪随机数发生器
+
+
+# diff
+
+* 比较两个文件/文件夹 a 和 b
+
+```bash
+diff -c --suppress-common-lines  a b
+```
+
+`-x` 排除
+`-r` 递归
+
+* 统计
+
+```bash
+diff  -c --suppress-common-lines  . ../vim  | grep -c -e "^+ "
+```
+
+```bash
+diff   -c --suppress-common-lines  . ../vim  | grep -e "^- " -e "^\!" -c
+```
+*
