@@ -11,3 +11,8 @@ The primary is The only member in the replica set that receives write operations
 # 心跳
 
 Replica set中的成员每两秒发送一次心跳包, 如果10秒没有返回, 那么将会标记该成员不可访问.
+
+
+# Perform Two Phase Commits
+
+[Perform Two Phase Commits](https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/)
