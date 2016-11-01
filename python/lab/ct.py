@@ -1,24 +1,30 @@
 #!/usr/bin/env python
 # coding=utf-8
 import time
-import multiprocessing
+import threading
+import tornado.ioloop
+from tornado.concurrent import Future
 
-from threading import Thread
-
-
-class Ct(Thread):
-    def __init__(self, n):
-        super(Ct, self).__init__()
-        self.n = 0
-
-    def run(self):
-        while self.n > 0:
-            print('n: {}'.format(self.n))
-            self.n -= 1
-            time.sleep(3)
+ioloop = tornado.ioloop.IOLoop.current()
 
 
-if __name__ == '__main__':
-    c = Ct(20)
-    p = multiprocessing.Process(target=c.run)
-    p.start()
+def long_task(future, sec=5):
+    print("long task start")
+    time.sleep(sec)
+    print("after sleep")
+    future.set_result("long task done in %s sec" % sec)
+
+
+def after_task_done(future):
+    print("task done")
+    print(future.result())
+
+
+def test_future():
+    future = Future()
+    threading.Thread(target=long_task, args=(future,)).start()
+    ioloop.add_future(future, after_task_done)
+
+if __name__ == "__main__":
+    ioloop.add_callback(test_future)
+    ioloop.start()
