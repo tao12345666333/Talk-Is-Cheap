@@ -1,0 +1,30 @@
+{% extends "../base.html" %}
+
+{% block global %}
+
+<script type="text/javascript">
+    window.onload = function(){
+        if (window.location.search){
+            $("#pre-page").attr('href', window.location.pathname+window.location.search.split("&")[0]+"&skip="+{{skip-limit}}+"&limit="+{{limit}})
+            $("#next-page").attr('href', window.location.pathname+window.location.search.split("&")[0]+"&skip="+{{skip+limit}}+"&limit="+{{limit}})
+        }else{
+            $("#pre-page").attr('href', window.location.pathname+"?skip="+{{skip-limit}}+"&limit="+{{limit}})
+            $("#next-page").attr('href', window.location.pathname+"?skip="+{{skip+limit}}+"&limit="+{{limit}})
+        }
+
+        $("#stop").unbind('click').click(function(){
+            window.location.search = '?status=stop'
+        })
+        $("#doing").unbind('click').click(function(){
+            window.location.search = '?status=doing'
+        })
+        $("#start").unbind('click').click(function(){
+            window.location.search = '?status=start'
+        })
+        $("#alltasks").unbind('click').click(function(){
+            window.location.search = ''
+        })
+    }
+</script>
+
+{% end %}

@@ -1,0 +1,44 @@
+{% set menu = [('/', '首页'),] %}
+
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">证书管理平台</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-top-links navbar-right">
+                    {% for k in menu %}
+                        {% if handler.request.path.startswith(k[0]) %}
+                            <li class="active"><a href="{{ k[0] }}"><span class="glyphicon glyphicon-list-alt"></span>{{ k[1] }}</a>
+                            </li>
+                        {% else %}
+                            <li><a href="{{ k[0] }}"><span class="glyphicon glyphicon-list-alt"></span>{{ k[1] }}</a>
+                            </li>
+                        {% end %}
+                    {% end %}
+                </ul>
+            </div>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav in" id="side-menu">
+                        <li>
+                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                        </li>
+                        <li>
+                            <a href="/list/dc"><i class="fa fa-bar-chart-o fa-fw"></i>所有证书</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+        </nav>
+    </div>
+</div>
+<br />

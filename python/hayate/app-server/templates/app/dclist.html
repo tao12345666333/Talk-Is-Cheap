@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block body  %}
+
+<div id="page-wrapper" style="min-height: 446px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">所有证书</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   所有证书 
+                </div>
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover" >
+                            <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>排序标识</th>
+                                    <th>编辑</th>
+                                </tr>
+                            </thead>
+                            {% for num,i in enumerate(cates) %}
+                            <tbody>
+                                <tr>
+                                    <td>{{ i['name'] }}</td>
+                                    <td>{{ i['rank'] }}</td>
+                                    <td><a href="/edit/cate/{{ i['_id'] }}">点击编辑</a></td>
+                                </tr>
+                            </tbody>
+                            {% end %}
+                        </table>
+                    </div>
+                </div>
+                <a class="btn btn-outline btn-primary" id="pre-page" href="javascript:void(0)">上一页</a>
+                <a class="btn btn-outline btn-primary" id="next-page" href="javascript:void(0)">下一页</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $("#pre-page").attr('href', window.location.pathname+"?skip="+{{skip-limit}}+"&limit="+{{limit}})
+    $("#next-page").attr('href', window.location.pathname+"?skip="+{{skip+limit}}+"&limit="+{{limit}})
+</script>
+
+{% end  %}
