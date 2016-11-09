@@ -9,7 +9,7 @@ register.register_group_urls('', [
     ('/', app.HomeHandler),
     ('/index', app.HomeHandler),
     ('/create/(dc)', app.CreateHandler),
-    ('/list/(dc)', app.ListHandler),
+    ('/list/(dc)', app.HomeHandler),
     ('/edit/(dc)/([0-9a-f]{24})', app.EditHandler),
     ('/delete/(dc)/([0-9a-f]{24})', app.DelHandler),
 

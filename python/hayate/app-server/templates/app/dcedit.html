@@ -15,18 +15,48 @@
                 </div>
                 <div class="panel-body">
                     <div class="dataTable_wrapper">
-                        <form class="form-horizontal" role="form" method="POST">
+                        <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST">
                             {% module xsrf_form_html() %}
                             <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">name</label>
+                                <label for="name" class="col-sm-2 control-label">名称</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="name" value="{{ cate['name'] }}">
+                                  <input type="text" class="form-control" name="name" placeholder="填写证书名称" value="{{ dc['name'] }}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="rank" class="col-sm-2 control-label">rank</label>
+                                <label for="desc" class="col-sm-2 control-label">描述</label>
                                 <div class="col-sm-6">
-                                    <input type="num" class="form-control" name="rank" value="{{ cate['rank'] }}">
+                                    <input type="text" class="form-control" name="desc" placeholder="填写证书描述" value="{{ dc['desc'] }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="used" class="col-sm-2 control-label">被绑定项目</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="used" placeholder="填写被绑定项目，以, 分隔" value="{{ dc['used'] }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="spec" class="col-sm-2 control-label">域名规则</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="spec" placeholder="填写域名规则" value="{{ dc['spec'] }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="expiration" class="col-sm-2 control-label">过期时间</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="expiration" placeholder="填写过期时间eg, 2020-10-10 00:00" value="{{ dc['expiration'] }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="file" class="col-sm-2 control-label">证书</label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control" name="file" placeholder="上传证书">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="file" class="col-sm-2 control-label">证书名称</label>
+                                <div class="col-sm-6">
+                                  <span>{{ dc['file_name'] }}</span>
                                 </div>
                             </div>
                             <div class="form-group">

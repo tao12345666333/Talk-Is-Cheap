@@ -14,13 +14,17 @@ db_dc = dc_helper.dc
 
 class HomeHandler(BaseHandler):
 
+    _get_params = {
+        'option': [
+            ('skip', int, 0),
+            ('limit', int, 0)
+        ]
+    }
+
     def get(self, *args, **kwargs):
-        skip = self._skip
-        limit = self._limit
+        skip = self._params['skip']
+        limit = self._params['limit']
         dcs = db_dc.find(limit=limit, skip=skip, sort=[('atime', -1)])
-
-        dcs = list(dcs)
-
         self.render('index.html', dcs=dcs, limit=limit, skip=skip)
 
 
@@ -42,8 +46,6 @@ class CreateHandler(BaseHandler):
             ('used', list, []),
             ('spec', basestring, ''),
             ('expiration', basestring, ''),
-
-            ('file', file, None),
         ]
     }
 
@@ -60,12 +62,6 @@ class CreateHandler(BaseHandler):
         used = self._params['used']
         spec = self._params['spec']
         expiration = self._params['expiration']
-
-        file = self._params['file']
-
-        # print file
-
-        # print type(file)
         fid = None
 
         try:
@@ -88,19 +84,6 @@ class CreateHandler(BaseHandler):
         self.render('dccreate.html', message=message, limit=limit, skip=skip)
 
 
-class ListHandler(BaseHandler):
-
-    def get(self, tp):
-        skip = self._skip
-        limit = self._limit
-
-        if tp != 'dc':
-            return
-
-        dcs = db_dc.find(limit=limit, skip=skip)
-        self.render('dclist.html', dcs=dcs, limit=limit, skip=skip)
-
-
 class EditHandler(BaseHandler):
 
     def get(self, tp, objid):
@@ -114,6 +97,7 @@ class EditHandler(BaseHandler):
         if not dc:
             return
 
+        dc['used'] = ','.join(dc['used'])
         self.render('dcedit.html', message='', dc=dc, limit=limit, skip=skip)
 
     _post_params = {
@@ -136,10 +120,21 @@ class EditHandler(BaseHandler):
         dc = db_dc.find_by_id(objid)
         if not dc:
             return
+
         dc['name'] = self._params['name']
-        dc['rank'] = self._params['rank'] or 0
+        dc['desc'] = self._params['desc']
+        dc['used'] = self._params['used']
+        dc['spec'] = self._params['spec']
+        dc['expiration'] = self._params['expiration']
+
+        if self.request.files.get('file', None):
+            self.request.files['file'][0]['body']
+            dc['file'] = dc_files.put(self.request.files['file'][0]['body'])
+            dc['file_name'] = self.request.files['file'][0]['filename']
+
         db_dc.save(dc)
         message = 'success! update %s,  %s' % (dc['name'], dc['desc'])
+        dc['used'] = ','.join(dc['used'])
         self.render('dcedit.html', message=message, dc=dc, limit=limit, skip=skip)
 
 
