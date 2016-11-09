@@ -26,6 +26,9 @@ class Dc(Model):
         'used':            (list, []),
         'spec':            (basestring, ''),
 
-        'expiration':       (datetime, None),
-        'atime':            (datetime, None),
+        'file':            (ObjectId, ''),
+        'file_name':       (basestring, ''),
+
+        'expiration':      (datetime, None),
+        'atime':           (datetime, None),
     }

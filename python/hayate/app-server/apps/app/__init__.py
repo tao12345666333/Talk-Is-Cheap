@@ -12,6 +12,8 @@ register.register_group_urls('', [
     ('/list/(dc)', app.ListHandler),
     ('/edit/(dc)/([0-9a-f]{24})', app.EditHandler),
     ('/delete/(dc)/([0-9a-f]{24})', app.DelHandler),
+
+    ('/file/([0-9a-f]{24})', app.FileHandler),
 ])
 
 register.register_group_urls('/v1', [
