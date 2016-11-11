@@ -9,6 +9,8 @@ type V struct {
 	Y string
 }
 
+var pow = []int{1, 2, 4, 8}
+
 func main() {
 	var p *int
 	i := 42
@@ -30,6 +32,10 @@ func main() {
 	fmt.Println(a)
 
 	printSlice("a", a)
+
+	for i, v := range pow {
+		fmt.Printf("%d is %d\n", i, v)
+	}
 
 }
 
