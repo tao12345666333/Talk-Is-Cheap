@@ -11,6 +11,12 @@ type V struct {
 
 var pow = []int{1, 2, 4, 8}
 
+type Vertex struct {
+	string
+}
+
+var m map[string]Vertex
+
 func main() {
 	var p *int
 	i := 42
@@ -36,6 +42,36 @@ func main() {
 	for i, v := range pow {
 		fmt.Printf("%d is %d\n", i, v)
 	}
+
+	var ss []int
+	printSlice("ss", ss)
+	ss = append(ss, 6)
+	printSlice("ss", ss)
+	ss = append(ss, 6)
+	printSlice("ss", ss)
+	ss = append(ss, 6)
+	printSlice("ss", ss)
+
+	for i, v := range ss {
+		fmt.Printf("%d is %d; ", i, v)
+	}
+
+	m = make(map[string]Vertex)
+	m["Tao"] = Vertex{
+		"Beier",
+	}
+	fmt.Println("")
+	fmt.Println(m["Tao"])
+
+	var nm = map[string]Vertex{
+		"t1": Vertex{
+			"t1v",
+		},
+		"t2": Vertex{
+			"t2v",
+		},
+	}
+	fmt.Println(nm)
 
 }
 
