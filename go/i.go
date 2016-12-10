@@ -27,6 +27,10 @@ func (p Person) String() string {
 	return fmt.Sprintf("%v (%v years)", p.Name, p.Age)
 }
 
+func (p *Person) Error() string {
+	return fmt.Sprintf("one error at %v", p.Name)
+}
+
 func (p *Person) T() {
 	p.Name = "T"
 	p.Age = "Tage"
@@ -39,6 +43,13 @@ func (p Person) Nt() {
 	p.Age = "Tage"
 
 	fmt.Println(p)
+}
+
+func e() error {
+	return &Person{
+		"Te",
+		"aTe",
+	}
 }
 
 func main() {
@@ -58,4 +69,8 @@ func main() {
 
 	s := func(a, b int) int { return a + b }(6, 9)
 	fmt.Println(s)
+
+	if err := e(); err != nil {
+		fmt.Println(err)
+	}
 }
