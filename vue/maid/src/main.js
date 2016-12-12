@@ -9,9 +9,13 @@ import App from './App';
 Vue.use(VueRouter);
 Vue.use(ElementUI);
 
+const router = new VueRouter({
+  routes: [
+    { path: '/', component: App },
+  ],
+});
+
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  render: '<App/>',
-  components: { App },
-});
+  router,
+}).$mount('#app');
