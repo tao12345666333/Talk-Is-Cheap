@@ -2,19 +2,19 @@
   <div id="app">
     <router-view keep-alive>
     </router-view>
-    <mmain></mmain>
+    <home></home>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello';
-import Mmain from './components/Main';
+import Home from './components/Home';
 
 export default {
   name: 'app',
   components: {
     Hello,
-    Mmain,
+    Home,
   },
   template: '<h1>Test</h1>',
 };
