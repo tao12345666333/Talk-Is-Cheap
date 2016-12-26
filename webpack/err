@@ -1,0 +1,30 @@
+ModuleNotFoundError: Module not found: Error: Cannot resolve 'file' or 'directory' ./cat.js in /Users/tao/workspace/Talk-Is-Cheap/webpack
+    at /usr/local/lib/node_modules/webpack/lib/Compilation.js:229:38
+    at onDoneResolving (/usr/local/lib/node_modules/webpack/lib/NormalModuleFactory.js:29:20)
+    at /usr/local/lib/node_modules/webpack/lib/NormalModuleFactory.js:85:20
+    at /usr/local/lib/node_modules/webpack/node_modules/async/lib/async.js:726:13
+    at /usr/local/lib/node_modules/webpack/node_modules/async/lib/async.js:52:16
+    at done (/usr/local/lib/node_modules/webpack/node_modules/async/lib/async.js:241:17)
+    at /usr/local/lib/node_modules/webpack/node_modules/async/lib/async.js:44:16
+    at /usr/local/lib/node_modules/webpack/node_modules/async/lib/async.js:723:17
+    at /usr/local/lib/node_modules/webpack/node_modules/async/lib/async.js:167:37
+    at /usr/local/lib/node_modules/webpack/node_modules/enhanced-resolve/lib/UnsafeCachePlugin.js:24:19
+    at onResolved (/usr/local/lib/node_modules/webpack/node_modules/enhanced-resolve/lib/Resolver.js:38:18)
+    at /usr/local/lib/node_modules/webpack/node_modules/enhanced-resolve/lib/Resolver.js:127:10
+    at /usr/local/lib/node_modules/webpack/node_modules/enhanced-resolve/lib/Resolver.js:191:15
+    at applyPluginsParallelBailResult.createInnerCallback.log (/usr/local/lib/node_modules/webpack/node_modules/enhanced-resolve/lib/Resolver.js:110:4)
+    at loggingCallbackWrapper (/usr/local/lib/node_modules/webpack/node_modules/enhanced-resolve/lib/createInnerCallback.js:21:19)
+    at /usr/local/lib/node_modules/webpack/node_modules/tapable/lib/Tapable.js:134:6
+    at Tapable.<anonymous> (/usr/local/lib/node_modules/webpack/node_modules/enhanced-resolve/lib/DirectoryDescriptionFilePlugin.js:24:12)
+    at Storage.finished (/usr/local/lib/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:38:16)
+    at ReadFileContext.callback (/usr/local/lib/node_modules/webpack/node_modules/graceful-fs/graceful-fs.js:78:16)
+    at FSReqWrap.readFileAfterOpen [as oncomplete] (fs.js:359:13)
+resolve file
+  /Users/tao/workspace/Talk-Is-Cheap/webpack/cat.js doesn't exist
+  /Users/tao/workspace/Talk-Is-Cheap/webpack/cat.js.webpack.js doesn't exist
+  /Users/tao/workspace/Talk-Is-Cheap/webpack/cat.js.web.js doesn't exist
+  /Users/tao/workspace/Talk-Is-Cheap/webpack/cat.js.js doesn't exist
+  /Users/tao/workspace/Talk-Is-Cheap/webpack/cat.js.json doesn't exist
+resolve directory
+  /Users/tao/workspace/Talk-Is-Cheap/webpack/cat.js doesn't exist (directory default file)
+  /Users/tao/workspace/Talk-Is-Cheap/webpack/cat.js/package.json doesn't exist (directory description file)
