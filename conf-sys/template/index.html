@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+{% block main %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td class="col-md-3">id</td>
+        <td>主机</td>
+        <td>端口</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in data %}
+        <tr>
+          <td>{{ i['_id'] }}</td>
+          <td>{{ i['ip'] }}</td>
+          <td>{{ i['port'] }}</td>
+        </tr>
+      {% end %}
+    </tbody>
+  </table>
+{% end %}

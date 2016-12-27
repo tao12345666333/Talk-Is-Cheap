@@ -1,0 +1,10 @@
+
+            upstream app {
+              server 192.168.0.1;
+            }
+
+            server {
+              listen 9999;
+              servername 192.168.0.1;
+              charset  utf-8;
+            }
