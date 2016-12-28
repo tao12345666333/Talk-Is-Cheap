@@ -8,6 +8,12 @@ import tornado.websocket
 
 class MainHandler(tornado.websocket.WebSocketHandler):
 
+    def check_origin(*args, **kwargs):
+        """for deploy it with nginx reverse proxy
+        Since Tornado 4.0, it has some changes.
+        """
+        return True
+
     def open(self):
         print('websocket open')
 
