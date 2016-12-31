@@ -1,0 +1,1 @@
+ansible -vvv -i group.py g1 -u zjt -m shell -a 'uptime'
