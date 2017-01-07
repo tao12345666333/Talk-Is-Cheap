@@ -8,6 +8,7 @@ import Queue
 
 q = Queue.Queue()
 
+
 def cp(n):
     return n * 2
 
