@@ -1,0 +1,9 @@
+# simple playbook
+#
+- name: simple playbook
+  remote_user: tao
+  hosts: local
+  tasks:
+      - name: w
+        shell: 'w'
+
