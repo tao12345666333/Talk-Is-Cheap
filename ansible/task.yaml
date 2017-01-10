@@ -1,13 +1,12 @@
-- name: web service
+---
+# This is one test
+
+
+- name: list things
   remote_user: tao
   hosts: localhost
-  vars:
-    packages: nginx
   tasks:
-    - name: install nginx
-      yum: name={{ packages }} state=present
-      tags: install
-    - name: service nginx start
-      service: name=nginx enabled=yes state=started
-      sudo: yes
-      tags: start
+    - name: ls
+      command: ls /home/tao/
+    - name: ping
+      command: ping -c 1 moelove.info
