@@ -7,6 +7,6 @@
   hosts: localhost
   tasks:
     - name: ls
-      command: ls /home/tao/
+      command: ls /
     - name: ping
       command: ping -c 1 moelove.info
