@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 import json
+import sys
 
 data = {
     'g1': {
@@ -10,5 +11,9 @@ data = {
         ]
     }
 }
+
+with open('w.log', 'w') as f:
+    f.write(str(sys.argv))
+
 
 print json.dumps(data)
