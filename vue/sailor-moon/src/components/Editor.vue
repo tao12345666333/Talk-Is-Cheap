@@ -1,11 +1,21 @@
 <template>
-  <div id="mark">
-    <textarea :value="input" debounce="300" @input="update"></textarea>
-    <div v-html="input"></div>
+  <div>
+    <div id="mark">
+      <!--<textarea :value="input" debounce="300" @input="update"></textarea>-->
+      <!--<div v-html="input"></div>-->
+    </div>
+    <div id="editor" style="width: 50%; height: 980px;"></div>
   </div>
 </template>
 
 <script>
+// const ace = require('brace');
+// require('brace/mode/javascript');
+// require('brace/theme/monokai');
+import * as ace from 'brace';
+import 'brace/mode/javascript';
+import 'brace/theme/terminal';
+
 export default {
   name: 'editor',
   data() {
@@ -13,12 +23,16 @@ export default {
       input: 'editor',
     };
   },
-  methods: {
-    update: (e) => {
-      console.log(this);
-      this.input = e.target.value;
-    },
+  mounted() {
+    const editor = ace.edit('editor');
+    editor.getSession().setMode('ace/mode/javascript');
+    editor.setTheme('ace/theme/terminal');
   },
+  //methods: {
+  //  update: (e) => {
+  //    this.input = e.target.value;
+  //  },
+  //},
 };
 </script>
 
