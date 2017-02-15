@@ -1,8 +1,8 @@
 # simple playbook
 #
 - name: simple playbook
-  remote_user: tao
-  hosts: local
+  remote_user: root
+  hosts: 172.17.0.2
   tasks:
       - name: w
         shell: 'w'

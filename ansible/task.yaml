@@ -1,13 +1,12 @@
 ---
 # This is one test
 
-- name: list things
-  remote_user: tao
-  hosts: localhost
+- name: task playbook
+  remote_user: root
+  hosts: server
   tasks:
     - name: ls
       shell: ls /
       register: result_value
 
-    - name: ping
-      command: ping -c 1 moelove.info
+    - debug: var=result_value
