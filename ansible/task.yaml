@@ -10,3 +10,13 @@
       register: result_value
 
     - debug: var=result_value
+
+    - name: 'assert files'
+      assert:
+          that:
+              - '"home" in result_value'
+
+    - name: 'get site content'
+      uri:
+          url: http://moelove.info
+          return_content: yes
