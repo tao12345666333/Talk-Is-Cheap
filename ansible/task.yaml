@@ -4,6 +4,8 @@
 - name: task playbook
   remote_user: root
   hosts: server
+  vars_files:
+      - "defaults/main.yml"
   tasks:
     - name: ls
       shell: ls /
@@ -11,10 +13,10 @@
 
     - debug: var=result_value
 
-    - name: 'assert files'
-      assert:
-          that:
-              - '"home" in result_value'
+    #- name: 'assert files'
+      #assert:
+          #that:
+              #- '"home" in result_value'
 
     - name: write file
       template: src=templates/conf.j2 dest=/root/moelove.conf
