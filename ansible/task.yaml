@@ -16,6 +16,9 @@
           that:
               - '"home" in result_value'
 
+    - name: write file
+      template: src=templates/conf.j2 dest=/root/moelove.conf
+
     - name: 'get site content'
       uri:
           url: http://moelove.info

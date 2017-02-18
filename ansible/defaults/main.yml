@@ -1,0 +1,3 @@
+---
+ml_sys_version: "{% if ansible_distribution_version is defined %}{{ ansible_distribution_version }}{% else %}auto{% endif %}"
+
