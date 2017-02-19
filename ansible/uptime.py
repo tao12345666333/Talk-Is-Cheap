@@ -29,7 +29,7 @@ class ResultsCollector(CallbackBase):
 
 
 def main():
-    host_list = ['localhost']
+    host_list = ['172.17.0.2', '172.17.0.3']
     Options = namedtuple('Options', ['connection', 'module_path', 'forks', 'remote_user',
                                      'private_key_file', 'ssh_common_args', 'ssh_extra_args', 'sftp_extra_args',
                                      'scp_extra_args', 'become', 'become_method', 'become_user', 'verbosity', 'check'])
@@ -53,6 +53,7 @@ def main():
     play_source = dict(
         name="Ansible Play",
         hosts=host_list,
+        remote_user='root',
         gather_facts='no',
         tasks=[dict(action=dict(module='command',
                                 args=dict(cmd='/usr/bin/uptime')))]
