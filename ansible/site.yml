@@ -1,0 +1,19 @@
+---
+- name: task playbook
+  remote_user: root
+  hosts: server
+  vars:
+      ml_sys_name: "{{ ansible_distribution }}"
+  tasks:
+    #- name: ls
+      #shell: ls /
+      #register: result_value
+
+    #- debug: var=result_value
+
+    #- name: 'assert files'
+      #assert:
+          #that:
+              #- '"home" in result_value'
+
+    - debug: var={{ ml_sys_name }}
