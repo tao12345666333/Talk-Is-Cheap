@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ajax upload file with Tornado</title>
+    <script src="//cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="container" style="margin: 5% 10%;">
+      <div class="row">
+        这里是一个表单
+      </div>
+      <div class="row">
+        <form method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="text" name="name" id="username">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" name="file" id="exampleInputFile">
+            <p class="help-block">Example block-level help text here.</p>
+          </div>
+          <button id="go" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $('#go').click(function() {
+          let formData = new FormData();
+          formData.append('file', $('#exampleInputFile')[0].files[0])
+          formData.append('name', $('#username')[0].value)
+
+          $.ajax({
+            url: '/upload',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(resp) {
+              console.log(resp);
+            },
+          });
+        });
+      });
+
+    </script>
+  </body>
+</html>

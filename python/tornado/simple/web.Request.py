@@ -3,6 +3,7 @@
 import logging
 import os
 import uuid
+import json
 
 import tornado.ioloop
 import tornado.web
@@ -177,6 +178,29 @@ class WebSockethandler(tornado.websocket.WebSocketHandler):
         return True
 
 
+class UploadHandler(tornado.web.RequestHandler):
+
+    def get(self):
+        self.render('upload.html')
+
+    def post(self):
+
+        print self.get_argument('name')
+        print self.request.files["file"][0].filename
+
+        self.write('ok')
+
+        # fileinfo = self.request.files['file'][0]
+        # fname = fileinfo['filename']
+        # ctype = os.path.splitext(fname)[1]
+        # cname = str(uuid.uuid4()) + ctype
+
+        # f = open('./' + cname, 'w')
+        # f.write(fileinfo['body'])
+        # self.finish('%s is uploaded! and rename %s, check current folder.'
+                    # % (fname, cname))
+
+
 if __name__ == '__main__':
     settings = {
         'debug': True,
@@ -193,13 +217,14 @@ if __name__ == '__main__':
         (r'/async', AsyncHandler),
         (r'/page', PageHandler),
         (r'/template', TemplateHandler),
-        (r'/websocket', WebSockethandler)
+        (r'/websocket', WebSockethandler),
+        (r'/upload', UploadHandler),
     ], **settings)
 
     app.add_handlers(r'www\.moelove\.com', [
         (r'/virtual', VirtualHandler),
     ])
 
-    app.listen(9999)
+    app.listen(9996)
     logging.warning('start ..')
     tornado.ioloop.IOLoop.current().start()
