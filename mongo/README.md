@@ -16,3 +16,8 @@ Replica set中的成员每两秒发送一次心跳包, 如果10秒没有返回, 
 # Perform Two Phase Commits
 
 [Perform Two Phase Commits](https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/)
+
+
+集群内认证
+
+openssl rand -base64 755 > keyfile
