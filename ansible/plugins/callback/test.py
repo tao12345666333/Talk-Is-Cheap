@@ -13,9 +13,6 @@ ansible 运行结果回调
 
 class CallbackModule(object):
 
-    # def __init__(self, *args, **kwargs):
-        # pass
-
     def v2_runner_item_on_ok(self, *args, **kwargs):
         # time.sleep(10)
         # print args
@@ -55,7 +52,6 @@ class CallbackModule(object):
             if not i.startswith('__'):
                 print i
 
-        print '------'
         print json.dumps(args[0]._result, indent=4)
         print args[0]._task
         requests.post('http://127.0.0.1:9999/api/callback/test', args[0]._result)
