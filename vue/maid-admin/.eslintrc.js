@@ -34,6 +34,15 @@ module.exports = {
       'optionalDependencies': ['test/unit/index.js']
     }],
     // allow debugger during development
+    'no-console': ['error', { allow: ['warn', 'error', 'log'] }],
+    'quote-props': [2, "as-needed"],
+    'no-shadow': ['error', { 'builtinGlobals': false, hoist: 'never', allow: ['resolve', 'reject', 'done', 'cb'] }],
+    'no-param-reassign': ["error", { "props": false }],
+    'arrow-body-style': ["error", "always"],
+    'no-restricted-syntax': ['error', 'WithStatement'],
+    'no-underscore-dangle': ['error', { 'allow': ["_id"], 'allowAfterThis': true }],
+    'consistent-return': 'off',
+    // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }
