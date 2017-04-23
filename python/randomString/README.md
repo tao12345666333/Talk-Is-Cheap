@@ -1,1 +1,1 @@
-Generate strings.
+产生随机字符串.
