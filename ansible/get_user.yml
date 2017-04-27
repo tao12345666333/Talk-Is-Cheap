@@ -1,0 +1,7 @@
+---
+# This playbook for get host users name
+- hosts: all
+  gather_facts: False
+
+  roles:
+  - user

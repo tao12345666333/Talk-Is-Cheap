@@ -1,0 +1,16 @@
+---
+# This role used for get users
+
+- name: Get users names 
+  shell: cat /etc/passwd | cut -d':' -f1
+  register: user_names
+
+- debug: var=user_names
+
+- name: Get special group users
+  shell: cat /etc/group | grep "^{{ item }}:" | cut -d':' -f4
+  with_items:
+   - dev
+  register: group_users
+
+- debug: var=group_users
