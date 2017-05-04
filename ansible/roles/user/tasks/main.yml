@@ -10,6 +10,7 @@
 - name: Get special group users
   shell: cat /etc/group | grep "^{{ item }}:" | cut -d':' -f4
   with_items:
+   - sa
    - dev
   register: group_users
 
