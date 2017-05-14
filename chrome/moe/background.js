@@ -1,6 +1,11 @@
 chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.local.set('', function() {
-  });
+  console.log(chrome);
+  console.log(chrome.storage);
+  chrome.storage.local.clear();
+  chrome.storage.local.set({name: 'moelove.info'});
+  chrome.storage.local.get('name', function(e){
+    console.log(e);
+  })
 });
 
 chrome.app.runtime.onLaunched.addListener(function() {
@@ -12,6 +17,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
       top: 100,
       left: 200
     },
+    // resizable: false,
     minWidth: 100,
     minHeight: 100
   });
