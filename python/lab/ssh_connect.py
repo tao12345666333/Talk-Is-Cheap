@@ -26,8 +26,6 @@ class SSHClient(object):
         sc.load_system_host_keys()
         sc.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-        print sc
-
         try:
             sc.connect(hostname=self.ip, port=self.port,
                        username=self.username, pkey=self.pkey, timeout=20)
