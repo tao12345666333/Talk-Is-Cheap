@@ -1,1 +1,15 @@
-`git init --bare`  创建的仓库， 在多机器上，有用户权限问题。
+clone 包含子模块的项目
+
+```
+git clone xxx
+
+git submodule init
+git submodule update
+```
+
+
+或者
+
+```
+git clone --recursive xxx
+```
