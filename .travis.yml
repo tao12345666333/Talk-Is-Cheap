@@ -1,0 +1,10 @@
+language: c
+os:
+    - linux
+env:
+    - BUILD_TYPE=Release
+sudo: required
+services:
+    - docker
+script:
+    - echo 'test'
